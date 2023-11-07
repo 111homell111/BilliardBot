@@ -1,0 +1,13 @@
+names:
+- Anton
+- Rachad
+nc: 2
+roboflow:
+  license: CC BY 4.0
+  project: rachad
+  url: https://universe.roboflow.com/111homell111-islck/rachad/dataset/1
+  version: 1
+  workspace: 111homell111-islck
+test: /Users/ellayan/EllaPG/GitHub/BilliardBot/datasets/Rachad-1/test
+train: /Users/ellayan/EllaPG/GitHub/BilliardBot/datasets/Rachad-1/train
+val: /Users/ellayan/EllaPG/GitHub/BilliardBot/datasets/Rachad-1/valid
