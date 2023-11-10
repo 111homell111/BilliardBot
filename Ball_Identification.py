@@ -10,8 +10,6 @@ cv2.imshow('canny', image)
 
 if image is not None:
 
-    
-    
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (5,5), 0) #only odd nums
     canny  = cv2.Canny(blur, 125, 125)
