@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 LED Control</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      margin-top: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .led-box {
+      margin: auto;
+      width: 100px;
+      height: 100px;
+      background: #555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .led-light {
+      width: 60px;
+      height: 60px;
+      background: red;
+      border-radius: 50%;
+      box-shadow: 0 0 20px red;
+    }
+    .led-light.on {
+      background: green;
+      box-shadow: 0 0 20px green;
+    }
+  </style>
+</head>
+<body>
+  <h1>ESP32 LED Control</h1>
+  <div class="led-box">
+    <div id="led-light" class="led-light"></div>
+  </div>
+  <button onclick="toggleLED('1')">Turn On</button>
+  <button onclick="toggleLED('0')">Turn Off</button>
+
+  <script>
+    function toggleLED(state) {
+      var led = document.getElementById('led-light');
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          if(state === '1') {
+            led.classList.add('on');
+          } else {
+            led.classList.remove('on');
+          }
+        }
+      };
+      xhttp.open("GET", "/control?cmd=" + state, true);
+      xhttp.send();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- filename: index.html -->
+<html>
+<head>
+  <title>ESP32 LED Control</title>
+  <!-- Add additional styles or scripts here -->
+</head>
+<body>
+  <h1>ESP32 LED Control</h1>
+  <p>Click to control the LED:</p>
+  <button onclick="toggleLED('1')">Turn On</button>
+  <button onclick="toggleLED('0')">Turn Off</button>
+
+  <script>
+    function toggleLED(state) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Handle response if needed
+        }
+      };
+      xhttp.open("GET", "/control?cmd=" + state, true);
+      xhttp.send();
+    }
+  </script>
+</body>
+</html>
