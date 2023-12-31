@@ -5,7 +5,7 @@ import time
 # Import other necessary modules
 from image_processing import detect_backgroud_boudary, detect_pink_paper, detect_colored_spots, detect_colored_spots2, detect_balls
 from utility_functions import create_click_event, detect_and_draw_Y_axis, calculate_center, calculate_ball_measurements, annotate_ball_measurements
-from robot_control import send_command, calculate_rotation_steps, calculate_translation_steps, send_strike_command
+from robot_control import send_command, calculate_rotation_steps, calculate_translation_steps, send_strike_command, getCartesianStepsAndSpeed
 from constants import MOTOR_SPEED, LOWER_CENTER, UPPER_CENTER, LOWER_Y_AXIS, UPPER_Y_AXIS, LOWER_BALL, UPPER_BALL
 
 # Initialize camera
@@ -99,7 +99,8 @@ if __name__ == "__main__":
                     print(f"X_coordinate = {X_coordinate:.1f} cm, Y_coordinate = {Y_coordinate:.1f} cm")
                     # send_strike_command(1500) 
                 
-                    #TODO: @Ella, please add your functions for cartesian motion function here
+                    steps, speeds = getCartesianStepsAndSpeed(X_coordinate, Y_coordinate)
+                    send_command(steps[0], speeds[0], steps[2], speeds[2], steps[1], speeds[1])
 
 
 cap.release()
